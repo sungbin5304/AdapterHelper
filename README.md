@@ -95,3 +95,9 @@ rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false
 ## Preview (when clicked `L` and swipe left)
 
 <img alt="preview" src="https://raw.githubusercontent.com/sungbin5304/RecyclerViewAdapterMaker/master/Screenshot_1590685364.png" width="33%"/>
+
+
+# License
+[Apache License 2.0](https://github.com/sungbin5304/RecyclerViewAdapterMaker/blob/master/LICENSE)
+
+# Happy Coding :)
