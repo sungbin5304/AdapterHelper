@@ -1,9 +1,9 @@
-![banner](https://raw.githubusercontent.com/sungbin5304/RecyclerViewAdapterMaker/master/banner.png)
+![banner](https://raw.githubusercontent.com/sungbin5304/AdapterHelper/master/banner.png)
 
 <p align="center">
-  <a href="https://github.com/sungbin5304/RecyclerViewAdapterMaker/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/badge/License-Apache2-blue"/></a>
-  <a href="https://jitpack.io/#sungbin5304/RecyclerViewAdapterMaker"><img alt="Download" src="https://jitpack.io/v/sungbin5304/SimpleCodeEditor.svg"/></a>
-  <a href="https://github.com/sungbin5304/RecyclerViewAdapterMaker"><img alt="Title" src="https://img.shields.io/badge/Maker-RecyclerViewAdapter-ff69b4"/></a>
+  <a href="https://github.com/sungbin5304/AdapterHelper/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/badge/License-Apache2-blue"/></a>
+  <a href="https://jitpack.io/#sungbin5304/AdapterHelper"><img alt="Download" src="https://jitpack.io/v/sungbin5304/AdapterHelper.svg"/></a>
+  <a href="https://github.com/sungbin5304/RecyclerViewAdapterMaker"><img alt="Title" src="https://img.shields.io/badge/Helper-RecyclerViewAdapter-ff69b4"/></a>
   <a href="https://github.com/sungbin5304"><img alt="Highlight" src="https://img.shields.io/badge/GitHub-SungBin-yellow"/></a>
 </p>
 
@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.github.sungbin5304:RecyclerViewAdapterMaker:{version}'
+  implementation 'com.github.sungbin5304:AdapterHelper:{version}'
 }
 ```
 
@@ -58,7 +58,7 @@ AdapterMaker()
 ```
 ## Example
 
-<img alt="preview" src="https://raw.githubusercontent.com/sungbin5304/RecyclerViewAdapterMaker/master/Screenshot_1590685364.png" align="right" width="33%"/>
+<img alt="preview" src="https://raw.githubusercontent.com/sungbin5304/AdapterHelper/master/preview.png" align="right" width="33%"/>
 
 ``` Kotlin
 AdapterHelper
