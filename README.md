@@ -1,4 +1,4 @@
-![banner](https://raw.githubusercontent.com/sungbin5304/AdapterHelper/master/banner.png)
+![banner](https://raw.githubusercontent.com/sungbin5304/AdapterHelper/master/banner%20(1).png)
 
 <p align="center">
   <a href="https://github.com/sungbin5304/AdapterHelper/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/badge/License-Apache2-blue"/></a>
@@ -58,7 +58,7 @@ AdapterMaker()
 ```
 ## Example
 
-<img alt="preview" src="https://raw.githubusercontent.com/sungbin5304/AdapterHelper/master/preview.png" align="right" width="33%"/>
+<img alt="preview" src="https://raw.githubusercontent.com/sungbin5304/AdapterHelper/master/preview.png" align="right" width="30%"/>
 
 ``` Kotlin
 AdapterHelper
