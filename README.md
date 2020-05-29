@@ -25,37 +25,39 @@ dependencies {
 ```
 
 # Usage
-```Kotlin
-AdapterMaker()
-    .setAdapter(
-        view: RecyclerView,
-        swipeController: SwipeController(
-            object : SwipeControllerActions(),
-            buttonWidth: Float = 300f,
-            buttonRadius: Float = 40f,
-            leftButtonColor: Int? = null,
-            rightButtonColor: Int? = null,
-            leftButtonText: String? = null,
-            rightButtonText: String? = null
-        ),
-        option: AdapterMaker.Option(
-            AdapterMaker.Divider(
-                orientation: Int = LinearLayout.VERTICAL
-            )?,
-            AdapterMaker.Padding(
-                left: Int = 0,
-                top: Int = 0,
-                right: Int = 0,
-                bottom: Int = 0
-            )?
-        )?,
-        item: ArrayList<Any>,
-        layoutRes: Int
-    )
-    .setAdapterMakeListener { item, view, position ->
-        //todo
-    }
+## Default
+``` kotlin
+AdapterHelper
+    .with(view: RecyclerView)
+    .bindLayout(layoutRes: Int)
+    .create(item: ArrayList<Any>)
 ```
+
+## Binding your view
+``` kotlin
+...
+.addViewBindListener { item, view, position ->
+  //Bind your view. 
+}
+.create(item: ArrayList<Any>)
+```
+
+## Add some options
+``` kotlin
+...
+.addOption(Option(null, Padding(16, 16, 16, 16)))
+.addSwipeListener(SwipeController(object : SwipeControllerActions() {
+  override fun onLeftClicked(items: ArrayList<Any>, position: Int) {
+    super.onLeftClicked(items, position)
+      //code your action.
+    }
+    override fun onRightClicked(items: ArrayList<Any>, position: Int) {
+      super.onRightClicked(items, position)
+      //code your action.
+    }
+}, 300f, 40f, Color.BLUE, Color.RED, "Left", "Right"))
+```
+
 ## Example
 
 <img alt="preview" src="https://raw.githubusercontent.com/sungbin5304/AdapterHelper/master/preview.png" align="right" width="30%"/>
