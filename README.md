@@ -45,19 +45,22 @@ AdapterHelper
 ## Add some options
 ``` kotlin
 ...
-.addOption(Option(val divier: Divider?, val padding: Padding?)) 
+.addOption(Option(divier: Divider?, padding: Padding?)) 
 .addSwipeListener(SwipeController(object : SwipeControllerActions() {
   override fun onLeftClicked(items: ArrayList<Any>, position: Int) {
     super.onLeftClicked(items, position)
-      //code your action.
+    //code your action.
   }
   override fun onRightClicked(items: ArrayList<Any>, position: Int) {
     super.onRightClicked(items, position)
-      //code your action.
+    //code your action.
   }
 }, buttonWidth: Float = 300f, buttonRadius: Float = 40f, leftButtonColor: Int? = null, rightButtonColor: Int? = null, leftButtonText: String? = null, rightButtonText: String? = null))
 .create(item: ArrayList<Any>)
 ```
+
+### Divider(orientation: Int = LinearLayout.VERTICAL)
+### Padding(left: Int = 0, top: Int = 0, right: Int = 0, bottom: Int = 0)
 
 ## Example
 
