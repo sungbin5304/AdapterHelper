@@ -9,13 +9,14 @@ import android.view.MotionEvent
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.*
 import androidx.recyclerview.widget.RecyclerView
+import com.sungbin.recyclerviewadaptermaker.library.AdapterHelper
 import kotlin.math.max
 import kotlin.math.min
 
 
 @Suppress("NAME_SHADOWING")
 @SuppressLint("ClickableViewAccessibility")
-class SwipeController(
+open class SwipeController(
     buttonsActions: SwipeControllerActions,
     private val buttonWidth: Float = 300f,
     private val buttonRadius: Float = 40f,
@@ -107,7 +108,14 @@ class SwipeController(
                 else if (dX > buttonWidth) buttonShowedState = ButtonsState.LEFT_VISIBLE
 
                 if (buttonShowedState != ButtonsState.GONE) {
-                    setTouchDownListener(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                    setTouchDownListener(
+                        c,
+                        recyclerView,
+                        viewHolder,
+                        dY,
+                        actionState,
+                        isCurrentlyActive
+                    )
                     setItemsClickable(recyclerView, false)
                 }
             }
@@ -116,13 +124,12 @@ class SwipeController(
     }
 
     private fun setTouchDownListener(
-            c: Canvas,
-            recyclerView: RecyclerView,
-            viewHolder: RecyclerView.ViewHolder,
-            dX: Float,
-            dY: Float,
-            actionState: Int,
-            isCurrentlyActive: Boolean
+        c: Canvas,
+        recyclerView: RecyclerView,
+        viewHolder: RecyclerView.ViewHolder,
+        dY: Float,
+        actionState: Int,
+        isCurrentlyActive: Boolean
     ) {
         recyclerView.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
@@ -149,9 +156,15 @@ class SwipeController(
 
                 if (buttonsActions != null && buttonInstance != null && buttonInstance!!.contains(event.x, event.y)) {
                     if (buttonShowedState == ButtonsState.LEFT_VISIBLE) {
-                        buttonsActions!!.onLeftClicked(viewHolder.adapterPosition)
+                        buttonsActions!!.onLeftClicked(
+                            (recyclerView.adapter as AdapterHelper.Adapter).getAllItem(),
+                            viewHolder.adapterPosition
+                        )
                     } else if (buttonShowedState == ButtonsState.RIGHT_VISIBLE) {
-                        buttonsActions!!.onRightClicked(viewHolder.adapterPosition)
+                        buttonsActions!!.onRightClicked(
+                            (recyclerView.adapter as AdapterHelper.Adapter).getAllItem(),
+                            viewHolder.adapterPosition
+                        )
                     }
                 }
                 buttonShowedState = ButtonsState.GONE
@@ -177,7 +190,7 @@ class SwipeController(
         var rightButton: RectF? = null
 
         if(leftButtonColor != null && leftButtonText != null) {
-            p.color = leftButtonColor!!
+            p.color = leftButtonColor
 
             leftButton = RectF(
                     itemView.left.toFloat(),
@@ -186,11 +199,11 @@ class SwipeController(
                     itemView.bottom.toFloat()
             )
             c.drawRoundRect(leftButton, buttonRadius, buttonRadius, p)
-            drawText(leftButtonText!!, c, leftButton, p)
+            drawText(leftButtonText, c, leftButton, p)
         }
 
         if(rightButtonColor != null && rightButtonText != null) {
-            p.color = rightButtonColor!!
+            p.color = rightButtonColor
 
             rightButton = RectF(
                 itemView.right - buttonWidthWithoutPadding,
@@ -199,7 +212,7 @@ class SwipeController(
                 itemView.bottom.toFloat()
             )
             c.drawRoundRect(rightButton, buttonRadius, buttonRadius, p)
-            drawText(rightButtonText!!, c, rightButton, p)
+            drawText(rightButtonText, c, rightButton, p)
         }
 
         buttonInstance = null
