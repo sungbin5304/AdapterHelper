@@ -22,7 +22,7 @@ import kotlin.properties.Delegates
 
 object AdapterHelper {
 
-    private lateinit var item: ArrayList<Any>
+    private lateinit var item: ArrayList<*>
     private lateinit var listener: OnViewBindListener
     private lateinit var recyclerView: RecyclerView
     private var option: Option? = null
@@ -30,7 +30,7 @@ object AdapterHelper {
     private var layoutRes by Delegates.notNull<Int>()
 
     interface OnViewBindListener {
-        fun onViewBindListener(item: ArrayList<Any>, view: View, position: Int)
+        fun onViewBindListener(item: ArrayList<*>, view: View, position: Int)
     }
 
     fun addViewBindListener(listener: OnViewBindListener): AdapterHelper {
@@ -38,9 +38,9 @@ object AdapterHelper {
         return this
     }
 
-    fun addViewBindListener(listener: (item: ArrayList<Any>, view: View, position: Int) -> Unit): AdapterHelper {
+    fun addViewBindListener(listener: (item: ArrayList<*>, view: View, position: Int) -> Unit): AdapterHelper {
         this.listener = object : OnViewBindListener {
-            override fun onViewBindListener(item: ArrayList<Any>, view: View, position: Int) {
+            override fun onViewBindListener(item: ArrayList<*>, view: View, position: Int) {
                 listener(item, view, position)
             }
         }
@@ -67,7 +67,7 @@ object AdapterHelper {
         return this
     }
 
-    fun create(item: ArrayList<Any>){
+    fun create(item: ArrayList<*>){
         this.item = item
         setAdapter()
     }
@@ -99,8 +99,7 @@ object AdapterHelper {
                     parent: RecyclerView,
                     state: RecyclerView.State
                 ) {
-                    if (parent.getChildAdapterPosition(view) !=
-                        parent.adapter!!.itemCount) {
+                    if (parent.getChildAdapterPosition(view) != parent.adapter!!.itemCount) {
                         outRect.set(padding.left, padding.top, padding.right, padding.bottom)
                     }
                 }
@@ -133,7 +132,7 @@ object AdapterHelper {
         override fun getItemId(position: Int): Long = position.toLong()
         override fun getItemViewType(position: Int): Int = position
         fun getItem(position: Int): Any = item[position]
-        fun getAllItem(): ArrayList<Any> = item
+        fun getAllItem(): ArrayList<*> = item
     }
 
 }
