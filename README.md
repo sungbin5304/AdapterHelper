@@ -39,7 +39,7 @@ AdapterHelper
 .addViewBindListener { item, view, position ->
   //Bind your view. 
 }
-.create(item: ArrayList<Any>)
+.create(item: ArrayList<*>)
 ```
 
 ## Add some options
@@ -47,11 +47,11 @@ AdapterHelper
 ...
 .addOption(Option(divier: Divider?, padding: Padding?)) 
 .addSwipeListener(SwipeController(object : SwipeControllerActions() {
-  override fun onLeftClicked(items: ArrayList<Any>, position: Int) {
+  override fun onLeftClicked(items: ArrayList<*>, position: Int) {
     super.onLeftClicked(items, position)
     //code your action.
   }
-  override fun onRightClicked(items: ArrayList<Any>, position: Int) {
+  override fun onRightClicked(items: ArrayList<*>, position: Int) {
     super.onRightClicked(items, position)
     //code your action.
   }
@@ -77,11 +77,11 @@ AdapterHelper
     }
     .addOption(Option(null, Padding(16, 16, 16, 16)))
     .addSwipeListener(SwipeController(object : SwipeControllerActions() {
-        override fun onLeftClicked(items: ArrayList<Any>, position: Int) {
+        override fun onLeftClicked(items: ArrayList<*>, position: Int) {
             super.onLeftClicked(items, position)
             toast("${items[position]} Left Clicked.")
         }
-        override fun onRightClicked(items: ArrayList<Any>, position: Int) {
+        override fun onRightClicked(items: ArrayList<*>, position: Int) {
             super.onRightClicked(items, position)
             toast("${items[position]} Right Clicked.")
         }
