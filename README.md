@@ -90,6 +90,16 @@ AdapterHelper
 rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 ```
 
+# Gradle Error
+If you error at gradle `More than one file was found with OS independent path 'META-INF/library_release.kotlin_module'` this, add below code at your gradle.
+```gradle
+android {
+  packagingOptions {
+      exclude 'META-INF/library_release.kotlin_module'
+  }
+}
+```
+
 # License
 [Apache License 2.0](https://github.com/sungbin5304/RecyclerViewAdapterMaker/blob/master/LICENSE)
 
